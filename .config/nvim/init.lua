@@ -68,6 +68,7 @@ require('lazy').setup({
   'Civitasv/cmake-tools.nvim',
   'nvim-tree/nvim-tree.lua',
   'vim-test/vim-test',
+  'djoshea/vim-autoread',
 
   -- Git related plugins
   'tpope/vim-fugitive',
