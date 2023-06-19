@@ -65,7 +65,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   'ThePrimeagen/vim-be-good',
-  'Civitasv/cmake-tools.nvim',
+  'ilyachur/cmake4vim',
   'nvim-tree/nvim-tree.lua',
   'vim-test/vim-test',
   'djoshea/vim-autoread',
@@ -253,6 +253,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set('n', '<leader>cw', "<cmd>CMakeClean<cr>")
+vim.keymap.set('n', '<leader>cb', "<cmd>CMakeBuild<cr>")
+vim.keymap.set('n', '<leader>cr', "<cmd>CMakeRun<cr>")
+vim.keymap.set('n', '<leader>cc', "<cmd>CMake<cr>")
+vim.keymap.set('n', '<leader>ct', "<cmd>CTest<cr>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
