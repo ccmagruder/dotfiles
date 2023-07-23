@@ -1,6 +1,8 @@
 # Caleb Magruder 2023
 
 alias ll="ls -lha"
+alias gs="git status"
+alias gb="git branch"
 
 PATH="/Users/calebm/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/calebm/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
