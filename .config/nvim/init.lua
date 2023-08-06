@@ -70,6 +70,7 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
   'vim-test/vim-test',
   'djoshea/vim-autoread',
+  'tpope/vim-obsession',
 
   -- Git related plugins
   'tpope/vim-fugitive',
