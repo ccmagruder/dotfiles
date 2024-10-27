@@ -9,7 +9,19 @@ return {
       require('telescope').setup {
         defaults = {
           file_ignore_patterns = {".git/.*"},
-        }
+        },
+        pickers = {
+          live_grep = {
+            additional_args = function(opts)
+              return {"--hidden"}
+            end
+          },
+          find_files = {
+            additional_args = function(opts)
+              return {"--hidden"}
+            end
+          },
+        },
       }
     end,
   },

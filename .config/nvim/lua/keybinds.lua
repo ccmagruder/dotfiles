@@ -1,32 +1,30 @@
 -- .config/nvim/lua/keybinds/init.lua
 
 require('which-key').add({
-  { "<leader>b",  function() require('nvim-docker').build() end, desc = "Build" },
+  { "<leader>b",  require('nvim-docker').build, desc = "Build" },
 
-  { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open Explorer" },
+  { "<leader>e", require('nvim-tree.api').tree.toggle, desc = "Open Explorer" },
 
   { "<leader>f", group = "Telescope"},
-  { "<leader>ff", "<cmd>Telescope find_files hidden=True<cr>", desc="File" },
-  { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffer" },
-  { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+  { "<leader>ff", require('telescope.builtin').find_files, desc="Find Files" },
+  { "<leader>fb", require('telescope.builtin').buffers, desc = "Buffers" },
+  { "<leader>fg", require('telescope.builtin').live_grep, desc = "Live Grep" },
 
-  { "<leader>g", function() require('nvim-docker').toggle_git_diff() end, desc = "Toggle Gitsigns Highlighting" },
+  { "<leader>g", require('nvim-docker').toggle_git_diff, desc = "Toggle Gitsigns Highlighting" },
 
-  { "<leader>h", function() vim.diagnostic.open_float() end, desc = "Open Diagnostic Float" },
-
-  { "<leader>n", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Git Change" },
+  { "<leader>h", vim.diagnostic.open_float, desc = "Open Diagnostic Float" },
 
   { "<leader>s", "<cmd>w<cr>", desc = "Write Buffer" },
 
-  { "<leader>t", function() require('nvim-docker').test() end, desc = "Test" },
+  { "<leader>t", require('nvim-docker').test, desc = "Test" },
 
-  { "<leader>w", function() require'nvim-docker'.close_buffer() end, desc = "Close Buffer" },
+  { "<leader>w", require'nvim-docker'.close_buffer, desc = "Close Buffer" },
 
   { "<leader>q", "<cmd>qa<cr>", desc = "Exit" },
 
   { "<leader><tab>", "<cmd>bn<cr>", desc = "Next Buffer" },
 
-  { "<leader>,", function() require('nvim-docker').run() end, desc = "Run" },
+  { "<leader>,", require('nvim-docker').run, desc = "Run" },
 })
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
