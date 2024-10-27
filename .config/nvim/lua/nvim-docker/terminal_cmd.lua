@@ -13,7 +13,7 @@ local function terminal_cmd(cmd)
   -- If no windows are tagged, create a new one and tag it
   if terminal_cmd_win == nil then
     local bufid = vim.api.nvim_create_buf(false, false)
-    vim.bo[bufid].filetype = 'nvimd-output'
+    vim.bo[bufid].filetype = 'nvim-output'
     vim.cmd("botright vsplit")
     terminal_cmd_win = vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(prev_win)
@@ -23,9 +23,9 @@ local function terminal_cmd(cmd)
   -- Swap with new [unmodified] buffer, delete old buffer
   local old_buf = vim.api.nvim_win_get_buf(terminal_cmd_win)
   local new_buf = vim.api.nvim_create_buf(false, false)
-  vim.bo[new_buf].filetype = 'nvimd-output'
+  vim.bo[new_buf].filetype = 'nvim-output'
   vim.api.nvim_win_set_buf(terminal_cmd_win, new_buf)
-  if vim.bo[old_buf].filetype == 'nvimd-output' then
+  if vim.bo[old_buf].filetype == 'nvim-output' then
     vim.api.nvim_buf_delete(old_buf, {})
   end
 

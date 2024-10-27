@@ -5,13 +5,13 @@ local function close_buffer()
   if vim.bo[old_buf].buflisted == false then
   -- Corner case: buffer is not listed
 
-    if vim.bo[old_buf].filetype == 'nvimd-output' then
-      -- Corner case: nvimd output buffer, close without switching
+    if vim.bo[old_buf].filetype == 'nvim-output' then
+      -- Corner case: nvim output buffer, close without switching
       vim.api.nvim_buf_delete(old_buf, {})
       return
 
     else
-      -- Corner case: unlisted buffers (excepting nvimd output) don't close
+      -- Corner case: unlisted buffers (excepting nvim output) don't close
       vim.print("nvim-docker.close_buffer: Not a valid buffer to close.")
       return
     end
