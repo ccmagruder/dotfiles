@@ -40,3 +40,17 @@ vim.diagnostic.config(
     float = { border = "rounded" },
   }
 )
+
+-- Environment vars NVIM_{BUILD,TEST,RUN}_CMD are loaded via 'ellisonleao/dotenv.nvim'
+if vim.env["NVIM_BUILD_CMD"] == nil then
+  vim.env["NVIM_BUILD_CMD"] = "echo 'Set vim.env[\"NVIM_BUILD_CMD\"] to configure build.'"
+end
+
+if vim.env["NVIM_TEST_CMD"] == nil then
+  vim.env["NVIM_TEST_CMD"] = "echo 'Set vim.env[\"NVIM_TEST_CMD\"] to configure test.'"
+end
+
+if vim.env["NVIM_RUN_CMD"] == nil then
+  vim.env["NVIM_RUN_CMD"] = "echo 'Set vim.env[\"NVIM_RUN_CMD\"] to configure run.'"
+end
+
