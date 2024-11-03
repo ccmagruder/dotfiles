@@ -9,13 +9,6 @@ return {
 
   "folke/neodev.nvim",
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require('nvim-tree').setup()
-    end
-  },
-
   { "earthly/earthly.vim", },
 
   {
