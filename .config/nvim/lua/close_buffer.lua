@@ -1,7 +1,7 @@
 -- Close buffer without closing encapulating window
 local function close_buffer()
   local old_buf = vim.api.nvim_get_current_buf()
-  
+
   if vim.bo[old_buf].buflisted == false then
   -- Corner case: buffer is not listed
 
@@ -29,7 +29,7 @@ local function close_buffer()
     -- Corner case: create dummy buffer to switch to when closing last buffer
     vim.api.nvim_create_buf(true, false)
   end
-  
+
   -- Switch to next buffer, close previous
   vim.cmd('bn')
   vim.api.nvim_buf_delete(old_buf, {})

@@ -1,6 +1,8 @@
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
+    tag = 'v3.8.2',
+    enabled = true,
     main = "ibl",
     ---@module "ibl"
     ---@type ibl.config
@@ -22,13 +24,10 @@ return {
           vim.api.nvim_set_hl(0, "Frost3", { fg = "#88C0D0" })
           vim.api.nvim_set_hl(0, "Frost4", { fg = "#8FBCBB" })
         end)
-        
+
         require("ibl").setup {
           indent = { highlight = highlight },
-          scope = { enabled = false },
         }
-        
-        hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
   },
 }
