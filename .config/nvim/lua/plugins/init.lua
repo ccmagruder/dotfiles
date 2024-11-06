@@ -1,7 +1,4 @@
 return {
-
-  "folke/which-key.nvim",
-
   {
     "folke/neoconf.nvim",
     cmd = "Neoconf"
@@ -13,13 +10,15 @@ return {
 
   {
     'echasnovski/mini.nvim',
+    dependencies = {
+      { 'echasnovski/mini.icons', version = false },  -- main branch
+    },
     version = false,
     config = function()
       require('mini.icons').setup()
     end,
   },  -- main branch
 
-  { 'echasnovski/mini.icons', version = false },  -- main branch
 
   {
     -- fork of 'nordtheme/vim' mapping nord0 color to black

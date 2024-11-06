@@ -32,8 +32,6 @@ vim.o.updatetime = 100
 -- calls .config/nvim/lua/plugins.lua
 require("lazy").setup("plugins")
 
-require("keybinds")
-
 -- Configure diagnostic message window with borders, mapped to <leader>h in keybinds.lua
 vim.diagnostic.config(
   {
