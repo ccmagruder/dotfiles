@@ -21,6 +21,7 @@ vim.api.nvim_set_option_value("tabstop", 4, {})
 vim.api.nvim_set_option_value("number", true, {})
 vim.api.nvim_set_option_value("relativenumber", true, {})
 vim.api.nvim_set_option_value("cursorline", true, {})
+vim.api.nvim_set_option_value("termguicolors", true, {})
 
 vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "CursorHoldI"}, {
   pattern={"*"},
