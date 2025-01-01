@@ -53,3 +53,16 @@ if vim.env["NVIM_RUN_CMD"] == nil then
   vim.env["NVIM_RUN_CMD"] = "echo 'Set vim.env[\"NVIM_RUN_CMD\"] to configure run.'"
 end
 
+-- https://stackoverflow.com/questions/76259118/neovim-vim-optremove-doesnt-actually-change-the-option
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = vim.api.nvim_create_augroup("FormatOptions", { clear = true }),
+  pattern = { "*" },
+  callback = function()
+    -- Disable: Automatically insert the current comment leader after hitting 'o' or 'O'
+    --   in Normal mode
+    vim.opt_local.fo:remove("o")
+    --  Disable: Automatically insert the current comment leader after hitting <Enter>
+    --  in Insert mode
+    vim.opt_local.fo:remove("r")
+  end,
+})
