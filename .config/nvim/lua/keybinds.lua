@@ -11,6 +11,7 @@ local function set()
     {
       "<leader>b",
       function()
+        require('dotenv').command()
         require('terminal_cmd')(vim.env["NVIM_BUILD_CMD"])
       end,
       desc = "Build"
@@ -32,6 +33,7 @@ local function set()
     {
       "<leader>t",
       function()
+        require('dotenv').command()
         require('terminal_cmd')(vim.env["NVIM_TEST_CMD"])
       end,
       desc = "Test"
@@ -46,6 +48,7 @@ local function set()
     {
       "<leader>,",
       function()
+        require('dotenv').command()
         require('terminal_cmd')(vim.env["NVIM_RUN_CMD"])
       end,
       desc = "Run"
