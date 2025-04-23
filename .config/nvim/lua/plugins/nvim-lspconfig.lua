@@ -14,6 +14,7 @@ return {
           },
         },
       })
+      require('lspconfig').yamlls.setup({})
     end
   },
 }
