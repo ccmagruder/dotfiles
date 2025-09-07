@@ -68,11 +68,6 @@ local function set()
   vim.keymap.set('i', "<C-k>", [[<esc><cmd>TmuxNavigateUp<cr>]])
   vim.keymap.set('i', "<C-l>", [[<esc><cmd>TmuxNavigateRight<cr>]])
 
-  vim.keymap.del('n', 'gcc')
-  vim.keymap.set('n', 'gn', vim.cmd.cnext)
-  vim.keymap.set('n', 'gp', vim.cmd.cprev)
-  vim.keymap.set('n', 'gq', vim.cmd.ccl)
-
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 
 end
