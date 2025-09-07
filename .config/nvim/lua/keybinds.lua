@@ -75,14 +75,6 @@ local function set()
 
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 
-  -- these keymaps are creating conflicts with the 'r' in normal mode to
-  -- replace a character; need new mappings
-  -- vim.keymap.set('n', 'ra', "<cmd>MoltenReevaluateAll<cr>", { desc = "Run All Cells" })
-  -- vim.keymap.set('n', 'rh', "<cmd>MoltenHideOutput<cr>", { desc = "Hide Output" })
-  -- vim.keymap.set('n', 'rk', "<cmd>MoltenRestart<cr>", { desc = "Restart Kernel" })
-  -- vim.keymap.set('n', 'ro', "<cmd>MoltenShowOutput<cr><cmd>noautocmd MoltenEnterOutput<cr>", { desc = "Enter Cell Output" })
-  -- vim.keymap.set('n', 'rr', "<cmd>MoltenEvaluateOperator<cr><cmd>call feedkeys(\"ip\")<cr>", { desc = "Run Cell" })
-
 end
 
 return { set = set }
