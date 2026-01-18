@@ -1,12 +1,6 @@
 -- .config/nvim/lua/keybinds/init.lua
 
 local function set()
-  local function toggle_git_diff()
-    local gitsigns = require('gitsigns')
-    gitsigns.toggle_linehl()
-    gitsigns.toggle_deleted()
-  end
-
   require('which-key').add({
     {
       "<leader>b",
@@ -24,7 +18,7 @@ local function set()
     { "<leader>fb", require('telescope.builtin').buffers, desc = "Buffers" },
     { "<leader>fg", require('telescope.builtin').live_grep, desc = "Live Grep" },
 
-    { "<leader>g", toggle_git_diff, desc = "Toggle Gitsigns Highlighting" },
+    { "<leader>g", require('gitsigns').preview_hunk_inline, desc = "Toggle Gitsigns Highlighting" },
 
     { "<leader>h", vim.diagnostic.open_float, desc = "Open Diagnostic Float" },
 
