@@ -2,7 +2,7 @@
 {
   imports = [
     ./git.nix
-    ./nixvim.nix
+    ./nixvim
     ./tmux.nix
     ./zsh.nix
   ];
