@@ -20,12 +20,26 @@ in
 
   programs.nixvim = {
     enable = true;
+    opts = {
+      number = true;
+      tabstop = 2;
+      expandtab = true;
+      shiftwidth = 2;
+      autoread = true;
+    };
     colorschemes.nord.enable = true;
     plugins = {
       nvim-tree.enable = true;
       web-devicons.enable = true;
       tmux-navigator.enable = true;
       indent-blankline.enable = true;
+      gitsigns = {
+        enable = true;
+        settings = {
+          current_line_blame = true;
+          signcolumn = true;
+        };
+      };
       lsp = {
         enable = true;
         servers = {
@@ -56,10 +70,13 @@ in
       };
       telescope = {
         enable = true;
-        settings.defaults.vimgrep_arguments = [
-          "rg" "--color=never" "--no-heading" "--with-filename"
-          "--line-number" "--column" "--smart-case" "--hidden"
-        ];
+        settings.defaults = {
+          vimgrep_arguments = [
+            "rg" "--color=never" "--no-heading" "--with-filename"
+            "--line-number" "--column" "--smart-case" "--hidden"
+          ];
+          file_ignore_patterns = [ ".git/" ];
+        };
       };
       lualine = {
         enable = true;
@@ -139,12 +156,6 @@ in
         options.desc = "Telescope: Live Grep";
       }
     ];
-    opts = {
-      tabstop = 2;
-      expandtab = true;
-      shiftwidth = 2;
-      autoread = true;
-    };
     extraConfigLua = ''
       vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" }) -- background black
     '';
