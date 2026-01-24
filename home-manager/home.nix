@@ -122,6 +122,34 @@ in
       web-devicons.enable = true;
       tmux-navigator.enable = true;
       indent-blankline.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          nil_ls.enable = true;
+          nixd = {
+            enable = true;
+            settings = {
+              nixpkgs.expr = "import <nixpkgs> { }";
+              formatting.command = [ "nixfmt" ];
+              options = {
+                nixos.expr = ''(builtins.getFlake "/etc/nixos").nixosConfigurations.nixos.options'';
+              };
+            };
+          };
+        };
+        keymaps = {
+          diagnostic = {
+            "<leader>j" = "goto_next";
+            "<leader>k" = "goto_prev";
+          };
+          lspBuf = {
+            "gd" = "definition";
+            "K" = "hover";
+            "<leader>ca" = "code_action"; # Useful for ni'ls refactoring
+            "<leader>rn" = "rename";
+          };
+        };
+      };
       telescope = {
         enable = true;
         settings.defaults.vimgrep_arguments = [
@@ -164,11 +192,11 @@ in
     ];
 
     autoCmd = [
-      {
-        event = "FocusGained";
-        pattern = "*";
-        command = "silent !tmux resize-pane -Z";
-      }
+      # {
+      #   event = "FocusGained";
+      #   pattern = "*";
+      #   command = "silent !tmux resize-pane -Z";
+      # }
     ];
 
     globals.mapleader = " ";
