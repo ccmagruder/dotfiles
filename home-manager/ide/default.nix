@@ -1,7 +1,9 @@
 { ... }:
 {
   imports = [
-    ./zsh.nix
+    ./git.nix
     ./nixvim.nix
+    ./tmux.nix
+    ./zsh.nix
   ];
 }
