@@ -22,7 +22,7 @@
       flake.homeConfigurations."remote" =
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
-          modules = [ ./home.nix sops-nix.homeManagerModules.sops ];
+          modules = [ ./home.nix ./ide sops-nix.homeManagerModules.sops ];
         };
     };
 }
