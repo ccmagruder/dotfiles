@@ -1,5 +1,23 @@
 { pkgs, ... }:
+let
+  nixvim = import (
+    builtins.fetchGit {
+      url = "https://github.com/nix-community/nixvim";
+      rev = "f1e07ba53abd0fb4872a365cba45562144ad6130";
+    }
+  );
+in
 {
+  imports = [
+    nixvim.homeModules.nixvim
+  ];
+
+  home.packages = with pkgs; [ ripgrep fd ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   programs.nixvim = {
     enable = true;
     colorschemes.nord.enable = true;

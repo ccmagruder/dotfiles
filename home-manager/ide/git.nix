@@ -1,8 +1,10 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets."remote/github_token" = { };
+
+  home.packages = [ pkgs.git ];
 
   programs.git = {
     enable = true;
