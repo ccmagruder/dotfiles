@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
   };
 
   outputs = inputs@{ flake-parts, sops-nix, ... }:
@@ -23,6 +24,7 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
           modules = [ ./home.nix ./ide sops-nix.homeManagerModules.sops ];
+          extraSpecialArgs = { inherit inputs; };
         };
     };
 }
