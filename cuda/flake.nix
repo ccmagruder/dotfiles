@@ -4,9 +4,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, claude-code-nix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,6 +24,8 @@
         # 'inputsFrom' pulls all tools and libs from default.nix!
         # No need to repeat gcc, cmake, or gtest here.
         inputsFrom = [ self.packages.${system}.default ];
+
+        buildInputs = [ claude-code-nix.packages.${system}.claude-code ];
 
         shellHook = ''
           export CUDA_PATH=${pkgs.cudaPackages.cuda_nvcc}
