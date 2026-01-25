@@ -1,3 +1,6 @@
 .config/iterm2
 .config/com.nvidia.devtools/
 .config/nvim/lazy-lock.json
+Testing/
+build*/
+result

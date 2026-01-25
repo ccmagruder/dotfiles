@@ -1,0 +1,45 @@
+# default.nix
+{ lib, stdenv, cmake, cudaPackages, gtest}:
+
+stdenv.mkDerivation {
+  pname = "cuda-pro-app";
+  version = "0.0.0";
+
+  src = ./.;
+
+  requiredSystemFeatures = [ "cuda" ];
+  __noChroot = true;
+
+  nativeBuildInputs = [
+    cmake
+    cudaPackages.cuda_nvcc
+  ];
+
+  buildInputs = [
+    cudaPackages.cuda_cudart
+    gtest
+  ];
+
+  doCheck = true;
+
+  checkPhase = ''
+    runHook preCheck
+    export LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver/lib64:$LD_LIBRARY_PATH"
+
+    ls -l /run/opengl-driver/lib/libcuda.so.1 || echo "❌ Still missing libcuda in sandbox!"
+  
+    if [ ! -L /run/opengl-driver ]; then
+      echo "❌ ERROR: /run/opengl-driver is missing in sandbox. Check nix.conf extra-sandbox-paths."
+    fi
+
+    ctest --output-on-failure
+    runHook postCheck
+  '';
+
+
+  meta = with lib; {
+    description = "A CUDA C++ dummy project layout";
+    license = licenses.unfree; # CUDA requires this
+    platforms = platforms.linux;
+  };
+}
