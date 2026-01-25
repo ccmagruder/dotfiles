@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.tmux ];
+  home.packages = with pkgs; [ tmux smug ];
   programs.tmux = {
     enable = true;
     mouse = true;
@@ -9,6 +9,10 @@
       pkgs.tmuxPlugins.vim-tmux-navigator
       pkgs.tmuxPlugins.nord
     ];
+    extraConfig = ''
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+    '';
   };
 }
 

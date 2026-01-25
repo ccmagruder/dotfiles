@@ -8,7 +8,7 @@
       ll = "ls -lah";
       gs = "git status";
       update = "sudo nixos-rebuild test";
-      ide = "tmux -u new-session -n nixos -c ~/nixos \"nvim -c NvimTreeToggle\" \\; split-window -v \\; new-window -n dotfiles -c ~/dotfiles \"nvim -c NvimTreeToggle\" \\; split-window -v -c ~/dotfiles";
+      ide = "smug start";
     };
     enableCompletion = true;
     oh-my-zsh = {
