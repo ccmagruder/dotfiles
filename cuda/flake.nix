@@ -28,6 +28,7 @@
         buildInputs = with pkgs; [
           claude-code-nix.packages.${system}.claude-code
           ccls
+          zsh
         ];
 
         shellHook = ''
@@ -35,6 +36,7 @@
           # export LD_LIBRARY_PATH=${pkgs.linuxPackages.nvidia_x11}/lib:$LD_LIBRARY_PATH
           export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH"
           echo "🚀 Environment ready. Run 'cmake -B build' to begin."
+          exec ${pkgs.zsh}/bin/zsh
         '';
       };
     };
