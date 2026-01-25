@@ -12,11 +12,15 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     claude-code-nix.url = "github:sadjow/claude-code-nix";
   };
 
-  outputs = inputs@{ flake-parts, sops-nix, ... }:
+  outputs = inputs@{ flake-parts, nixvim, sops-nix, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [inputs.home-manager.flakeModules.home-manager ];
       systems = [ "x86_64-linux" ];

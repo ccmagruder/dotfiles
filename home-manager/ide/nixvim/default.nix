@@ -1,15 +1,7 @@
-{ pkgs, ... }:
-let
-  nixvim = import (
-    builtins.fetchGit {
-      url = "https://github.com/nix-community/nixvim";
-      rev = "f1e07ba53abd0fb4872a365cba45562144ad6130";
-    }
-  );
-in
+{ pkgs, inputs, ... }:
 {
   imports = [
-    nixvim.homeModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./bufdelete.nix
     ./gitsigns.nix
     ./lsp.nix
