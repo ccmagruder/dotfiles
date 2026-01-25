@@ -25,7 +25,10 @@
         # No need to repeat gcc, cmake, or gtest here.
         inputsFrom = [ self.packages.${system}.default ];
 
-        buildInputs = [ claude-code-nix.packages.${system}.claude-code ];
+        buildInputs = with pkgs; [
+          claude-code-nix.packages.${system}.claude-code
+          ccls
+        ];
 
         shellHook = ''
           export CUDA_PATH=${pkgs.cudaPackages.cuda_nvcc}
