@@ -7,8 +7,7 @@ window_template: &devenv
   commands:
     - nvim -c NvimTreeToggle
   panes:
-    - commands:
-      - zsh
+    - commands: []
 
 windows:
   - name: nixos
