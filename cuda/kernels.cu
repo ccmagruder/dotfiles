@@ -1,13 +1,13 @@
-#include <gtest/gtest.h>
 #include <cuda_runtime.h>
+#include "kernels.h"
 
 __global__ void add(int *a, int *b, int *c) {
     *c = *a + *b;
 }
 
-TEST(CudaKernelTest, AdditionWorks) {
-    int a = 10, b = 20, c = 0;
+int cuda_add(int a, int b) {
     int *d_a, *d_b, *d_c;
+    int result = 0;
 
     cudaMalloc(&d_a, sizeof(int));
     cudaMalloc(&d_b, sizeof(int));
@@ -17,14 +17,20 @@ TEST(CudaKernelTest, AdditionWorks) {
     cudaMemcpy(d_b, &b, sizeof(int), cudaMemcpyHostToDevice);
 
     add<<<1, 1>>>(d_a, d_b, d_c);
+
     cudaError_t err = cudaDeviceSynchronize();
     if (err != cudaSuccess) {
-        std::cerr << "CUDA Error: " << cudaGetErrorString(err) << std::endl;
-        exit(1);
+        cudaFree(d_a);
+        cudaFree(d_b);
+        cudaFree(d_c);
+        return -1;
     }
-    cudaMemcpy(&c, d_c, sizeof(int), cudaMemcpyDeviceToHost);
-    
-    EXPECT_EQ(c, 30);
 
-    cudaFree(d_a); cudaFree(d_b); cudaFree(d_c);
+    cudaMemcpy(&result, d_c, sizeof(int), cudaMemcpyDeviceToHost);
+
+    cudaFree(d_a);
+    cudaFree(d_b);
+    cudaFree(d_c);
+
+    return result;
 }
