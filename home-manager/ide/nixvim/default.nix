@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    ./bat.nix
     ./bufdelete.nix
     ./gitsigns.nix
     ./lsp.nix
