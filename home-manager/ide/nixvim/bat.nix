@@ -9,7 +9,7 @@
     ];
 
     extraConfigLua = ''
-      require("bat").setup()
+      require("bat").setup({enabled=true})
     '';
   };
 
@@ -17,8 +17,14 @@
     {
       mode = "n";
       key = "<leader>b";
-      action = "<cmd>Bat<cr>";
-      options.desc = "Run BaT";
+      action = "<cmd>Bat build<cr>";
+      options.desc = "Run BaT Build";
+    }
+    {
+      mode = "n";
+      key = "<leader>t";
+      action = "<cmd>Bat test<cr>";
+      options.desc = "Run BaT Test";
     }
   ];
 }
