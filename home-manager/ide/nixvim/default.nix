@@ -71,6 +71,27 @@
         key = "<leader>q";
         action = "<cmd>qa<CR>";
       }
+      # tmux-navigator from insert mode
+      {
+        mode = "i";
+        key = "<C-h>";
+        action = "<Esc>:TmuxNavigateLeft<CR>";
+      }
+      {
+        mode = "i";
+        key = "<C-j>";
+        action = "<Esc>:TmuxNavigateDown<CR>";
+      }
+      {
+        mode = "i";
+        key = "<C-k>";
+        action = "<Esc>:TmuxNavigateUp<CR>";
+      }
+      {
+        mode = "i";
+        key = "<C-l>";
+        action = "<Esc>:TmuxNavigateRight<CR>";
+      }
     ];
   };
 }
