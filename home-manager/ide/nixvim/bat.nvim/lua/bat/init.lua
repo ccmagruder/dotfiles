@@ -6,7 +6,7 @@ local commands = require("bat.commands")
 function M.setup(opts)
   if opts and opts.enabled then
     local options = config.setup(opts)
-    commands.setup()
+    commands.setup(options)
   end
 end
 

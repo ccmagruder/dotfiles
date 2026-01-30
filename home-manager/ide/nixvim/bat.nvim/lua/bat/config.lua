@@ -2,6 +2,7 @@ local M = {}
 
 local defaults = {
   enabled = true,
+  path = ".bat.json"
 }
 
 function M.setup(opts)
