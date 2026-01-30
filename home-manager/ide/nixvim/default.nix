@@ -36,7 +36,10 @@
     # Plugins, see imports for additional plugins
     plugins = {
       web-devicons.enable = true;
-      tmux-navigator.enable = true;
+      tmux-navigator = {
+        enable = true;
+        settings.no_wrap = true;
+      };
       indent-blankline.enable = true;
     };
 
