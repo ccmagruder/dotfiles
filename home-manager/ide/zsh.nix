@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -14,7 +14,21 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      theme = "agnoster";
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      format = "$nix_shell$directory$git_branch$character ";
+      character = {
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[❯](bold red)";
+      };
+      nix_shell = {
+        disabled = false;
+        symbol = "❄️  ";
+      };
     };
   };
 }
