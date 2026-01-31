@@ -13,6 +13,10 @@
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
 
+      # Dim inactive panes
+      set -g window-style 'bg=#1a1a1a'
+      set -g window-active-style 'bg=#000000'
+
       # vim-tmux-navigator with no-wrap
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 
