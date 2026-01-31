@@ -5,13 +5,8 @@
     settings = {
       sections = {
         lualine_a = [ "mode" ];
-        lualine_b = [ "branch" "diff" "diagnostic" ];
-        lualine_c = [ 
-          {
-            __unkeyed-1 = "filename";
-            newfile_status = true;
-            path = 3;
-          }
+        lualine_b = [ ];
+        lualine_c = [
         ];
         lualine_x = [ "filetype" ];
         lualine_y = [ "progress" ];
@@ -24,6 +19,33 @@
         lualine_x = [ ];
         lualine_y = [ ];
         lualine_z = [ "branch" ];
+      };
+      winbar = {
+        lualine_a = [
+          {
+            __unkeyed-1 = "filename";
+            newfile_status = true;
+            path = 1;
+          }
+        ];
+        lualine_b = [ ];
+        lualine_c = [ ];
+        lualine_x = [ ];
+        lualine_y = [ ];
+        lualine_z = [ ];
+      };
+      inactive_winbar = {
+        lualine_a = [ ];
+        lualine_b = [
+          {
+            __unkeyed-1 = "filename";
+            path = 1;
+          }
+        ];
+        lualine_c = [ ];
+        lualine_x = [ ];
+        lualine_y = [ ];
+        lualine_z = [ ];
       };
     };
   };
