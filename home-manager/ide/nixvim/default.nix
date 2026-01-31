@@ -25,12 +25,16 @@
       expandtab = true;
       shiftwidth = 2;
       autoread = true;
+      winhighlight = "Normal:Normal,NormalNC:NormalNC";
     };
 
     # Color Theme
     colorschemes.nord.enable = true;
     extraConfigLua = ''
       vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" }) -- background black
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- dimmed background for inactive windows
+      vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#000000" }) -- nvim-tree active background
+      vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "#1a1a1a" }) -- nvim-tree inactive background (dimmed)
     '';
 
     # Plugins, see imports for additional plugins
