@@ -31,7 +31,7 @@
         format = "[$symbol]($style) ";
       };
       git_branch = {
-        format = "[$branch]($style)";
+        format = "[$branch]($style) ";
       };
       git_status = {
         format = "([$staged$modified$untracked]($style) )";
