@@ -20,14 +20,24 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$nix_shell$directory$git_branch$character ";
+      format = "$nix_shell$directory$git_branch$git_status$character";
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
       };
       nix_shell = {
         disabled = false;
-        symbol = "❄️  ";
+        symbol = "❄️";
+        format = "[$symbol]($style) ";
+      };
+      git_branch = {
+        format = "[$branch]($style)";
+      };
+      git_status = {
+        format = "([$staged$modified$untracked]($style) )";
+        staged = "+";
+        modified = "!";
+        untracked = "?";
       };
     };
   };
