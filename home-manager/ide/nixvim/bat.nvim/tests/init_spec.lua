@@ -36,7 +36,7 @@ describe("bat.init", function()
       vim.api.nvim_win_close(bat_window, false)
     end)
 
-    it("should create a second bat window", function()
+    it("should not create a second bat window", function()
       -- Get initial state
       local initial_window = vim.api.nvim_get_current_win()
 
@@ -65,7 +65,17 @@ describe("bat.init", function()
     it("should run commands within a terminal in bat window", function()
       -- Run a command
       local cmd = "echo 'Hello World'"
+
+      -- Adding to pre-existing buffer to prevent autoremoval when running bat.run()
+      vim.api.nvim_buf_set_lines(0, 0, -1, false, { "nonempty buffer" })
+
+      -- Capture the number of buffers before/after bat.run()
+      local initial_bufs = #vim.api.nvim_list_bufs()
       local info = bat.run(cmd)
+      local after_open_window_bufs = #vim.api.nvim_list_bufs()
+
+      -- Assert the number of buffers is incremented by 1
+      assert.are.equal(initial_bufs+1, after_open_window_bufs)
 
       -- Assert terminal is running cmd
       assert.are.equal("terminal", info.mode)

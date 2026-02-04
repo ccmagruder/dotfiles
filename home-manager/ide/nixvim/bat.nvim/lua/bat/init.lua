@@ -35,6 +35,7 @@ function M.run(cmd)
   local initial_window = vim.api.nvim_get_current_win()
   local bat_window = M.open_window()
   vim.api.nvim_set_current_win(bat_window)
+  vim.cmd("enew")
   vim.fn.termopen({ "bash", "-c", cmd })
   vim.api.nvim_set_current_win(initial_window)
 
