@@ -61,5 +61,17 @@ describe("bat.init", function()
       -- Close bat window for next test
       vim.api.nvim_win_close(bat_window, false)
     end)
+
+    it("should run commands within a terminal in bat window", function()
+      -- Run a command
+      local cmd = "echo 'Hello World'"
+      local info = bat.run(cmd)
+
+      -- Assert terminal is running cmd
+      assert.are.equal("terminal", info.mode)
+      assert.match("bash", info.argv[1])
+      assert.match("-c", info.argv[2])
+      assert.match(cmd, info.argv[3])
+    end)
   end)
 end)
