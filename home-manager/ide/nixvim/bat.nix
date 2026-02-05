@@ -12,7 +12,7 @@
 
     extraConfigLua = ''
       require("bat").setup(
-        { enabled = true, path = "ide/nixvim/.bat.json" }
+        { enabled = true }
       )
     '';
   };

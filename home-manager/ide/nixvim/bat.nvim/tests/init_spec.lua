@@ -8,6 +8,18 @@ local bat = require("bat")
 
 describe("bat.init", function()
   describe("read_json_config", function()
+    it("should parse a json chosen by user settings", function()
+      -- Create temp test file
+      local test_file = "/tmp/.bat-test.json"
+      vim.fn.writefile({ '{"build": "echo \'Hello World\'"}' }, test_file)
+
+      local cmds = bat.read_json_config(test_file)
+      assert.match("echo 'Hello World'", cmds["build"])
+
+      -- Cleanup
+      os.remove(test_file)
+    end)
+
     it("should gracefully error when .bat.json is missing", function()
       -- Generate error message
       local ok, err = pcall(bat.read_json_config, "/nonexistent/path/.bat.json")
@@ -61,7 +73,9 @@ describe("bat.init", function()
       -- Close bat window for next test
       vim.api.nvim_win_close(bat_window, false)
     end)
+  end)
 
+  describe("run", function()
     it("should run commands within a bat window terminal", function()
       -- Run a command
       local cmd = "echo 'Hello World'"

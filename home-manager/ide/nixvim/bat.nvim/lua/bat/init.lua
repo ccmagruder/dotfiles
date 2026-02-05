@@ -13,7 +13,8 @@ end
 function M.read_json_config(filepath)
   local fullpath = vim.fn.expand(filepath)
   local content = table.concat(vim.fn.readfile(fullpath), "\n")
-  M.data = vim.fn.json_decode(content)
+  cmds = vim.fn.json_decode(content)
+  return cmds
 end
 
 function M.open_window()
