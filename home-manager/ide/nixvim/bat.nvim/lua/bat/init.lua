@@ -32,10 +32,17 @@ function M.open_window()
 end
 
 function M.run(cmd)
+  for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
+    local ok, is_bat = pcall(vim.api.nvim_buf_get_var, buf_id, "is_bat_buffer")
+    if ok and is_bat then
+      vim.api.nvim_buf_delete(buf_id, {force = true})
+    end
+  end
   local initial_window = vim.api.nvim_get_current_win()
   local bat_window = M.open_window()
   vim.api.nvim_set_current_win(bat_window)
   vim.cmd("enew")
+  vim.api.nvim_buf_set_var(0, "is_bat_buffer", true)
   vim.fn.termopen({ "bash", "-c", cmd })
   vim.api.nvim_set_current_win(initial_window)
 

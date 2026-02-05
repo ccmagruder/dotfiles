@@ -62,7 +62,7 @@ describe("bat.init", function()
       vim.api.nvim_win_close(bat_window, false)
     end)
 
-    it("should run commands within a terminal in bat window", function()
+    it("should run commands within a bat window terminal", function()
       -- Run a command
       local cmd = "echo 'Hello World'"
 
@@ -82,6 +82,19 @@ describe("bat.init", function()
       assert.match("bash", info.argv[1])
       assert.match("-c", info.argv[2])
       assert.match(cmd, info.argv[3])
+    end)
+
+    it("should close old bat buffers when rerunning", function()
+      -- Run a command
+      local cmd = "echo 'Hello World'"
+
+      -- Capture the number of buffers before/after bat.run()
+      local initial_bufs = #vim.api.nvim_list_bufs()
+      local info = bat.run(cmd)
+      local after_open_window_bufs = #vim.api.nvim_list_bufs()
+
+      -- Assert the number of buffers is not incremented
+      assert.are.equal(initial_bufs, after_open_window_bufs)
     end)
   end)
 end)
