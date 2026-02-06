@@ -19,7 +19,19 @@
         lualine_z = [ "location" ];
       };
       tabline = {
-        lualine_a = [ "buffers" ];
+        lualine_a = [
+          {
+            __unkeyed-1 = "buffers";
+            section_separators = {
+              left = "";
+              right = "";
+            };
+            component_separators = {
+              left = "|";
+              right = "|";
+            };
+          }
+        ];
         lualine_b = [ ];
         lualine_c = [ ];
         lualine_x = [ ];
