@@ -1,5 +1,5 @@
 # default.nix
-{ lib, stdenv, cmake, cudaPackages, gtest}:
+{ lib, stdenv, cmake, cudaPackages, gtest, makeWrapper }:
 
 stdenv.mkDerivation {
   pname = "cuda-pro-app";
@@ -13,6 +13,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     cudaPackages.cuda_nvcc
+    makeWrapper
   ];
 
   buildInputs = [
@@ -36,6 +37,12 @@ stdenv.mkDerivation {
     runHook postCheck
   '';
 
+  postFixup = ''
+    for bin in $out/bin/*; do
+      wrapProgram "$bin" \
+        --prefix LD_LIBRARY_PATH : "/run/opengl-driver/lib"
+    done
+  '';
 
   meta = with lib; {
     description = "A CUDA C++ dummy project layout";
