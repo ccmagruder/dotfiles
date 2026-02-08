@@ -56,6 +56,8 @@ local function in_window(win, fn)
   local initial_window = vim.api.nvim_get_current_win()
   vim.api.nvim_set_current_win(win)
   fn()
+  -- window to follow tail of buffer, autoscroll
+  vim.fn.win_execute(win, "normal! G")
   vim.api.nvim_set_current_win(initial_window)
 end
 
