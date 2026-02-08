@@ -20,7 +20,7 @@ end
 -- Create a new bat window, preserving user's cursor position.
 local function create_bat_window()
   local initial_window = vim.api.nvim_get_current_win()
-  vim.cmd("rightbelow vsplit")
+  vim.cmd("botright vsplit")
   local bat_window = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_var(bat_window, "is_bat_window", true)
   vim.api.nvim_set_current_win(initial_window)

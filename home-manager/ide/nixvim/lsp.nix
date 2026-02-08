@@ -33,6 +33,7 @@
       };
       lspBuf = {
         "gd" = "definition";
+        "gD" = "declaration";
         "K" = "hover";
         "<leader>ca" = "code_action"; # Useful for ni'ls refactoring
         "<leader>rn" = "rename";
