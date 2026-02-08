@@ -30,6 +30,12 @@
       action = "<cmd>Bat test<cr>";
       options.desc = "Run BaT Test";
     }
+    {
+      mode = "n";
+      key = "<leader>,";
+      action = "<cmd>Bat run<cr>";
+      options.desc = "Run BaT Run";
+    }
   ];
 
   home.activation.bat-nvim-tests = let
