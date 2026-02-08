@@ -14,7 +14,16 @@
           };
         };
       };
-      ccls.enable = true;
+      # ccls.enable = true;
+      clangd = {
+        enable = true;
+        cmd = [
+          "clangd"
+          "--background-index" # index project in background for faster symbol lookup
+          "--clang-tidy" # enable clang-tidy diagnostics inline
+          "--pch-storage=memory"
+        ];
+      };
     };
     keymaps = {
       diagnostic = {
