@@ -120,5 +120,7 @@
         action = "<Esc>:TmuxNavigateRight<CR>";
       }
     ];
+
+    clipboard.register = "unnamedplus";
   };
 }
