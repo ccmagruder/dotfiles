@@ -27,13 +27,11 @@ local function create_bat_window()
   return bat_window
 end
 
--- Delete all bat buffers to prevent accumulation.
-local function delete_bat_buffers()
-  for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
-    local ok, is_bat = pcall(vim.api.nvim_buf_get_var, buf_id, "is_bat_buffer")
-    if ok and is_bat then
-      vim.api.nvim_buf_delete(buf_id, {force = true})
-    end
+-- Delete buffer if it's a bat buffer.
+local function delete_bat_buffer(buf)
+  local ok, is_bat = pcall(vim.api.nvim_buf_get_var, buf, "is_bat_buffer")
+  if ok and is_bat then
+    vim.api.nvim_buf_delete(buf, {force = true})
   end
 end
 
@@ -77,7 +75,7 @@ end
 -- Expose internal functions for testing.
 M._find_bat_window = find_bat_window
 M._create_bat_window = create_bat_window
-M._delete_bat_buffers = delete_bat_buffers
+M._delete_bat_buffer = delete_bat_buffer
 M._get_channel_info = get_channel_info
 M._open_window = open_window
 M._create_bat_buffer = create_bat_buffer
@@ -96,11 +94,12 @@ end
 -- Execute shell command in the bat terminal window.
 -- Returns channel info for the terminal process.
 function M.run(cmd)
-  delete_bat_buffers()
   local bat_window = open_window()
+  local old_buf = vim.api.nvim_win_get_buf(bat_window)
   in_window(bat_window, function()
     create_bat_buffer(cmd)
   end)
+  delete_bat_buffer(old_buf)
   return get_channel_info(bat_window)
 end
 

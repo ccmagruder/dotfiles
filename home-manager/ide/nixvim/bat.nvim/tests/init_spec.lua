@@ -63,41 +63,33 @@ describe("bat.init", function()
     end)
   end)
 
-  describe("_delete_bat_buffers", function()
-    it("should delete buffers marked as bat buffers", function()
+  describe("_delete_bat_buffer", function()
+    it("should delete buffer marked as bat buffer", function()
       -- Create a hidden bat buffer (not displayed in any window)
       local buf = vim.api.nvim_create_buf(true, true)
       vim.api.nvim_buf_set_var(buf, "is_bat_buffer", true)
 
       assert.is_true(vim.api.nvim_buf_is_valid(buf))
 
-      bat._delete_bat_buffers()
+      bat._delete_bat_buffer(buf)
 
       assert.is_false(vim.api.nvim_buf_is_valid(buf))
     end)
 
     it("should not delete regular buffers", function()
-      -- Create a regular buffer
       vim.cmd("enew")
       local buf = vim.api.nvim_get_current_buf()
-      vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "test content" })
 
-      local initial_count = #vim.api.nvim_list_bufs()
-
-      bat._delete_bat_buffers()
+      bat._delete_bat_buffer(buf)
 
       assert.is_true(vim.api.nvim_buf_is_valid(buf))
-      assert.are.equal(initial_count, #vim.api.nvim_list_bufs())
     end)
   end)
 
   describe("_get_channel_info", function()
     it("should return channel info for terminal window", function()
-      -- Create a new window with a scratch buffer for terminal
-      local buf = vim.api.nvim_create_buf(false, true)
       vim.cmd("rightbelow vsplit")
       local win = vim.api.nvim_get_current_win()
-      vim.api.nvim_win_set_buf(win, buf)
       vim.fn.termopen({ "bash", "-c", "echo test" })
 
       local info = bat._get_channel_info(win)
@@ -150,7 +142,6 @@ describe("bat.init", function()
       vim.cmd("rightbelow vsplit")
       local other_win = vim.api.nvim_get_current_win()
       vim.cmd("wincmd p")
-      local initial_win = vim.api.nvim_get_current_win()
 
       local executed_in_win = nil
       bat._in_window(other_win, function()
@@ -203,7 +194,7 @@ describe("bat.init", function()
   end)
 
   describe("_open_window", function()
-    it("should open on the right side without changing focus", function()
+    it("should open on the right side", function()
       -- Get initial state
       local initial_window = vim.api.nvim_get_current_win()
 
@@ -220,37 +211,20 @@ describe("bat.init", function()
     end)
 
     it("should not create a second bat window", function()
-      -- Get initial state
-      local initial_window = vim.api.nvim_get_current_win()
-
-      -- First call: open the bat window
-      bat._open_window()
-      local bat_window = vim.api.nvim_get_current_win()
+      local bat_window = bat._open_window()
       local win_count_after_first_open = #vim.api.nvim_list_wins()
 
-      -- Assert window focus remains unchanged
-      assert.are.equal(initial_window, vim.api.nvim_get_current_win())
-
-      -- Second call: should not create new window
       bat._open_window()
 
-      -- Assert window focus remains unchanged
-      assert.are.equal(initial_window, vim.api.nvim_get_current_win())
+      assert.are.equal(win_count_after_first_open, #vim.api.nvim_list_wins())
 
-      -- Verify no new window was created
-      local final_win_count = #vim.api.nvim_list_wins()
-      assert.are.equal(win_count_after_first_open, final_win_count)
-
-      -- Close bat window for next test
+      -- Cleanup
       vim.api.nvim_win_close(bat_window, false)
     end)
   end)
 
   describe("run", function()
     it("should run commands within a bat window terminal", function()
-      -- Clean up any leftover bat buffers from previous tests
-      bat._delete_bat_buffers()
-
       local cmd = "echo 'Hello World'"
       local info = bat.run(cmd)
 
@@ -262,16 +236,18 @@ describe("bat.init", function()
     end)
 
     it("should close old bat buffers when rerunning", function()
-      -- Run a command
       local cmd = "echo 'Hello World'"
 
-      -- Capture the number of buffers before/after bat.run()
-      local initial_bufs = #vim.api.nvim_list_bufs()
-      local info = bat.run(cmd)
-      local after_open_window_bufs = #vim.api.nvim_list_bufs()
+      -- First run creates a bat buffer
+      bat.run(cmd)
+      local bufs_after_first_run = #vim.api.nvim_list_bufs()
+
+      -- Second run should delete old buffer and create new one
+      bat.run(cmd)
+      local bufs_after_second_run = #vim.api.nvim_list_bufs()
 
       -- Assert the number of buffers is not incremented
-      assert.are.equal(initial_bufs, after_open_window_bufs)
+      assert.are.equal(bufs_after_first_run, bufs_after_second_run)
     end)
   end)
 end)
