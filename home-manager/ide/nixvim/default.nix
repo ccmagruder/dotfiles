@@ -9,6 +9,7 @@
     ./lualine.nix
     ./nvim-tree.nix
     ./telescope.nix
+    ./toggleterm.nix
   ];
 
   home.sessionVariables = {
@@ -26,6 +27,8 @@
       shiftwidth = 2;
       autoread = true;
       winhighlight = "Normal:Normal,NormalNC:NormalNC";
+      ttimeoutlen = 10;
+      timeoutlen = 200;
     };
 
     # Color Theme
@@ -66,6 +69,7 @@
       tmux-navigator = {
         enable = true;
         settings.no_wrap = true;
+        settings.no_mappings = true;
       };
       indent-blankline.enable = true;
     };
@@ -97,6 +101,27 @@
         mode = "n";
         key = "<leader>q";
         action = "<cmd>qa<CR>";
+      }
+      # tmux-navigator from normal mode
+      {
+        mode = "n";
+        key = "<C-h>";
+        action = "<cmd>TmuxNavigateLeft<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = "<cmd>TmuxNavigateDown<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = "<cmd>TmuxNavigateUp<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-l>";
+        action = "<cmd>TmuxNavigateRight<CR>";
       }
       # tmux-navigator from insert mode
       {
