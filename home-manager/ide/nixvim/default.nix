@@ -9,6 +9,7 @@
     ./lualine.nix
     ./nvim-tree.nix
     ./telescope.nix
+    ./tmux-navigator.nix
     ./toggleterm.nix
   ];
 
@@ -66,11 +67,6 @@
     # Plugins, see imports for additional plugins
     plugins = {
       web-devicons.enable = true;
-      tmux-navigator = {
-        enable = true;
-        settings.no_wrap = true;
-        settings.no_mappings = true;
-      };
       indent-blankline.enable = true;
     };
 
@@ -101,48 +97,6 @@
         mode = "n";
         key = "<leader>q";
         action = "<cmd>qa<CR>";
-      }
-      # tmux-navigator from normal mode
-      {
-        mode = "n";
-        key = "<C-h>";
-        action = "<cmd>TmuxNavigateLeft<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-j>";
-        action = "<cmd>TmuxNavigateDown<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-k>";
-        action = "<cmd>TmuxNavigateUp<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-l>";
-        action = "<cmd>TmuxNavigateRight<CR>";
-      }
-      # tmux-navigator from insert mode
-      {
-        mode = "i";
-        key = "<C-h>";
-        action = "<Esc>:TmuxNavigateLeft<CR>";
-      }
-      {
-        mode = "i";
-        key = "<C-j>";
-        action = "<Esc>:TmuxNavigateDown<CR>";
-      }
-      {
-        mode = "i";
-        key = "<C-k>";
-        action = "<Esc>:TmuxNavigateUp<CR>";
-      }
-      {
-        mode = "i";
-        key = "<C-l>";
-        action = "<Esc>:TmuxNavigateRight<CR>";
       }
     ];
 

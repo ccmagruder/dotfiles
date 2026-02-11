@@ -39,26 +39,5 @@
       action = "<C-\\><C-n><cmd>ToggleTerm<CR>";
       options.desc = "Close floating terminal";
     }
-    # tmux-navigator from terminal mode (bypass neovim, talk to tmux directly)
-    {
-      mode = "t";
-      key = "<C-h>";
-      action.__raw = ''function() vim.fn.system("tmux select-pane -L") end'';
-    }
-    {
-      mode = "t";
-      key = "<C-j>";
-      action.__raw = ''function() vim.fn.system("tmux select-pane -D") end'';
-    }
-    {
-      mode = "t";
-      key = "<C-k>";
-      action.__raw = ''function() vim.fn.system("tmux select-pane -U") end'';
-    }
-    {
-      mode = "t";
-      key = "<C-l>";
-      action.__raw = ''function() vim.fn.system("tmux select-pane -R") end'';
-    }
   ];
 }
