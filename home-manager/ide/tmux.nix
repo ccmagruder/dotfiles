@@ -9,6 +9,8 @@
       pkgs.tmuxPlugins.vim-tmux-navigator
       pkgs.tmuxPlugins.nord
     ];
+    terminal = "tmux-256color";
+    escapeTime = 10;
     extraConfig = ''
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
