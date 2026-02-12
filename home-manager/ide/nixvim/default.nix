@@ -71,6 +71,8 @@
       indent-blankline.enable = true;
     };
 
+    extraPlugins = [ pkgs.vimPlugins.vim-sleuth ];
+
     # Auto-save
     autoCmd = [
       {
