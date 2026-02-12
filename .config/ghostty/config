@@ -44,6 +44,12 @@ font-style = Bold
 background = #000000
 #### end modified ####
 
+#### modified 2/12/26 ####
+# remove the UI prompt allowing copying behavior
+clipboard-read = allow
+clipboard-write = allow
+#### end modified ####
+
 #
 # # Empty values are used to reset config keys to default.
 # key =
