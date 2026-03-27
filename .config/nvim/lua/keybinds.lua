@@ -24,13 +24,35 @@ local function set()
 
     { "<leader>s", "<cmd>w<cr>", desc = "Write Buffer" },
 
+
+    { "<leader>n", group = "neotest" },
     {
-      "<leader>t",
+      "<leader>nt",
       function()
-        require('dotenv').command()
-        require('terminal_cmd')(vim.env["NVIM_TEST_CMD"])
+        require("neotest").output_panel.clear()
+        require("neotest").run.run()
       end,
-      desc = "Test"
+      desc = "run"
+    },
+    {
+      "<leader>na",
+      function()
+        require("neotest").output_panel.clear()
+        require("neotest").run.run(vim.fn.expand("%"))
+      end,
+      desc = "run"
+    },
+    {
+      "<leader>nn",
+      function()
+        require("neotest").output.open({ enter = true })
+      end,
+      desc = "open"
+    },
+    {
+      "<leader>ns",
+      require("neotest").summary.toggle,
+      desc = "summary toggle",
     },
 
     { "<leader>w", require('close_buffer'), desc = "Close Buffer" },
