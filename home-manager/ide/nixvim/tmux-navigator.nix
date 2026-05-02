@@ -3,8 +3,8 @@
   programs.nixvim = {
     plugins.tmux-navigator = {
       enable = true;
-      settings.no_wrap = true;
-      settings.no_mappings = true;
+      settings.no_wrap = 1;
+      settings.no_mappings = 1;
     };
     keymaps = [
       # tmux-navigator from normal mode
