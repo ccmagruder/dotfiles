@@ -10,7 +10,7 @@
     ./nvim-tree.nix
     ./telescope.nix
     ./tmux-navigator.nix
-    ./cmp.nix
+    ./blink-cmp.nix
     ./toggleterm.nix
   ];
 
