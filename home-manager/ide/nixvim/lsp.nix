@@ -26,18 +26,27 @@
       };
     };
     keymaps = {
-      diagnostic = {
-        "<leader>j" = "goto_next";
-        "<leader>k" = "goto_prev";
-        "<leader>d" = "open_float";
-      };
       lspBuf = {
         "gd" = "definition";
         "gD" = "declaration";
-        "K" = "hover";
         "<leader>ca" = "code_action"; # Useful for ni'ls refactoring
         "<leader>rn" = "rename";
       };
     };
   };
+
+  programs.nixvim.keymaps = [
+    {
+      mode = "n";
+      key = "<leader>j";
+      action.__raw = "function() vim.diagnostic.jump({ count = 1, float = true }) end";
+      options.desc = "Next diagnostic";
+    }
+    {
+      mode = "n";
+      key = "<leader>k";
+      action.__raw = "function() vim.diagnostic.jump({ count = -1, float = true }) end";
+      options.desc = "Prev diagnostic";
+    }
+  ];
 }
