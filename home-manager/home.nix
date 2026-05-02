@@ -7,6 +7,7 @@
 
   home.packages = [
     inputs.claude-code-nix.packages.${pkgs.system}.claude-code
+    pkgs.podman-compose
   ];
 
   # Let Home Manager install and manage itself.
