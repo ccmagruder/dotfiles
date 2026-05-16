@@ -18,6 +18,7 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     claude-code-nix.url = "github:sadjow/claude-code-nix";
+    bat-nvim.url = "github:ccmagruder/bat.nvim";
   };
 
   outputs = inputs@{ flake-parts, nixvim, sops-nix, ... }:

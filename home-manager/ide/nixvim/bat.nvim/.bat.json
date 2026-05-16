@@ -1,5 +1,0 @@
-{
-  "build": "nix develop --command nvim --headless -u tests/minimal_init.lua -c 'PlenaryBustedDirectory tests/'",
-  "test": "for i in {1..100}; do echo $i; sleep 0.05; done"
-}
-
