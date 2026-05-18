@@ -7,7 +7,6 @@
     focusEvents = true;  # needed for pkgs.vimPlugins.vim.tmux-focus-events
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
-      pkgs.tmuxPlugins.nord
     ];
     terminal = "tmux-256color";
     escapeTime = 10;
@@ -31,6 +30,8 @@
       bind-key -T copy-mode-vi C-j if-shell "[ #{pane_at_bottom} -eq 0 ]" "select-pane -D"
       bind-key -T copy-mode-vi C-k if-shell "[ #{pane_at_top} -eq 0 ]" "select-pane -U"
       bind-key -T copy-mode-vi C-l if-shell "[ #{pane_at_right} -eq 0 ]" "select-pane -R"
+
+      run-shell "bash ${pkgs.tmuxPlugins.nord}/share/tmux-plugins/nord/nord.tmux"
     '';
   };
 }
