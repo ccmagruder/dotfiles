@@ -2,16 +2,15 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "remote";
-  home.homeDirectory = "/home/remote";
+  home.username = "caleb";
+  home.homeDirectory = "/home/caleb";
 
   programs.git.settings = {
-    user.email = "ccmagruder@gmail.com";
+    user.email = "caleb.magruder@simplerose.com";
   };
 
   home.packages = [
     inputs.claude-code-nix.packages.${pkgs.system}.claude-code
-    pkgs.podman-compose
   ];
 
   # Let Home Manager install and manage itself.

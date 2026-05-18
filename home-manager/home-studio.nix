@@ -5,6 +5,10 @@
   home.username = "calebm";
   home.homeDirectory = "/Users/calebm";
 
+  programs.git.settings = {
+    user.email = "ccmagruder@gmail.com";
+  };
+
   home.packages = [
     inputs.claude-code-nix.packages.${pkgs.system}.claude-code
   ];

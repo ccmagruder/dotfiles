@@ -17,7 +17,7 @@
     bat-nvim.url = "github:ccmagruder/bat.nvim";
   };
 
-  outputs = inputs@{ flake-parts, nixvim, sops-nix, ... }:
+  outputs = inputs@{ flake-parts, nixvim, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [inputs.home-manager.flakeModules.home-manager ];
       systems = [ "aarch64-darwin" "x86_64-linux" ];
@@ -31,6 +31,12 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages."aarch64-darwin";
           modules = [ ./home-studio.nix ./ide ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+      flake.homeConfigurations."vector"=
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+          modules = [ ./home-vector.nix ./ide ];
           extraSpecialArgs = { inherit inputs; };
         };
     };
