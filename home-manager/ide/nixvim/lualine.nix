@@ -42,12 +42,16 @@
         lualine_a = [
           {
             __unkeyed-1 = "filename";
-            newfile_status = true;
             path = 1;
           }
         ];
         lualine_b = [ ];
-        lualine_c = [ ];
+        lualine_c = [
+          {
+            __unkeyed-1.__raw = "function() return require('nvim-navic').get_location() end";
+            cond.__raw = "function() return require('nvim-navic').is_available() end";
+          }
+        ];
         lualine_x = [ ];
         lualine_y = [ ];
         lualine_z = [ ];

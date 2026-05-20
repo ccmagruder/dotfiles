@@ -12,6 +12,7 @@
     ./tmux-navigator.nix
     ./blink-cmp.nix
     ./toggleterm.nix
+    ./navic.nix
   ];
 
   home.sessionVariables = {
