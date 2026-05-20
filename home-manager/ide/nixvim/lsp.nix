@@ -14,6 +14,7 @@
           };
         };
       };
+      basedpyright.enable = true;
       # ccls.enable = true;
       clangd = {
         enable = true;
@@ -28,10 +29,18 @@
     keymaps = {
       lspBuf = {
         "gd" = "definition";
-        "gD" = "declaration";
+        "gt" = "type_definition";
         "<leader>ca" = "code_action"; # Useful for ni'ls refactoring
         "<leader>rn" = "rename";
       };
+      extra = [
+        {
+          mode = "n";
+          key = "gr";
+          action = "<cmd>Telescope lsp_references<CR>";
+          options.desc = "LSP References via Telescope";
+        }
+      ];
     };
   };
 
