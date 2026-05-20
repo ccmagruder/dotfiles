@@ -15,6 +15,7 @@
         };
       };
       basedpyright.enable = true;
+      jsonls.enable = true;
       # ccls.enable = true;
       clangd = {
         enable = true;
