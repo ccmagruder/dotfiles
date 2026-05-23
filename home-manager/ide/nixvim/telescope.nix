@@ -18,5 +18,11 @@
       action = "<cmd>Telescope live_grep<cr>";
       options.desc = "Telescope: Live Grep";
     }
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action = "<cmd>Telescope find_files<cr>";
+      options.desc = "Telescope: Fine Files";
+    }
   ];
 }
