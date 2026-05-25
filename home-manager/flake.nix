@@ -39,5 +39,11 @@
           modules = [ ./home-vector.nix ./ide ];
           extraSpecialArgs = { inherit inputs; };
         };
+      flake.homeConfigurations."mbp" =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."aarch64-darwin";
+          modules = [ ./home-mbp.nix ./ide ];
+          extraSpecialArgs = { inherit inputs; };
+        };
     };
 }
