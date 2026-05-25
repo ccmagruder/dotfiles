@@ -20,7 +20,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$nix_shell$directory$git_branch$git_status$character";
+      format = "$nix_shell$directory$git_branch$git_status$git_state$character";
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
@@ -32,6 +32,9 @@
       };
       git_branch = {
         format = "[$branch]($style) ";
+      };
+      git_state = {
+        format = "\\([$state( $progress_current/$progress_total)]($style)\\) ";
       };
       git_status = {
         format = "([$staged$modified$untracked]($style) )";
