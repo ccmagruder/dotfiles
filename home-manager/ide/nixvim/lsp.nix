@@ -3,7 +3,6 @@
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
-      nil_ls.enable = true;
       nixd = {
         enable = true;
         settings = {
@@ -16,7 +15,6 @@
       };
       basedpyright.enable = true;
       jsonls.enable = true;
-      # ccls.enable = true;
       clangd = {
         enable = true;
         cmd = [
