@@ -17,7 +17,7 @@ nix flake lock --update-input nixpkgs
 
 ## Architecture Overview
 
-This is a **Nix Flakes-based Home Manager configuration** for managing a personal development environment. The flake outputs a `homeConfigurations.remote` that combines user settings, IDE tooling, and encrypted secrets.
+This is a **Nix Flakes-based Home Manager configuration** for managing a personal development environment. The flake outputs a `homeConfigurations.remote` that combines user settings and IDE tooling.
 
 ### Module Structure
 
@@ -26,7 +26,7 @@ flake.nix              # Entry point - defines inputs and composes modules
 ├── home.nix           # User identity, packages, state version
 ├── ide/               # Development environment module
 │   ├── default.nix    # Aggregates: git, tmux, zsh, nixvim
-│   ├── git.nix        # Git config + sops-nix secret for GitHub token
+│   ├── git.nix        # Git config
 │   ├── tmux.nix       # Tmux with vim-tmux-navigator integration
 │   ├── zsh.nix        # Zsh + oh-my-zsh + custom aliases
 │   └── nixvim/        # Neovim IDE configuration
@@ -37,15 +37,12 @@ flake.nix              # Entry point - defines inputs and composes modules
 │       ├── lualine.nix    # Status/tabline
 │       ├── bufdelete.nix  # Buffer management
 │       └── gitsigns.nix   # Git blame/signs
-└── secrets/
-    └── secrets.yaml   # SOPS-encrypted secrets (AGE encryption)
 ```
 
 ### Key Patterns
 
 - **Module composition**: `default.nix` files aggregate related submodules via `imports = [...]`
 - **Flake inputs passed to modules**: Modules receive `{ config, pkgs, inputs, ... }` for access to dependencies
-- **Secrets**: sops-nix decrypts `secrets.yaml` using the SSH host key at `/etc/ssh/ssh_host_ed25519_key`
 - **Cross-tool integration**: Tmux and Neovim share navigation via `vim-tmux-navigator`
 
 ### Neovim Keybindings (Leader = Space)
