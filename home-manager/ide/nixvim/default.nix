@@ -13,6 +13,7 @@
     ./blink-cmp.nix
     ./toggleterm.nix
     ./navic.nix
+    ./satellite.nix
   ];
 
   home.sessionVariables = {
