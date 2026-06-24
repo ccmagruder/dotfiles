@@ -26,10 +26,13 @@
       bind-key -n C-k if-shell "$is_vim" "send-keys C-k" "if-shell '[ #{pane_at_top} -eq 0 ]' 'select-pane -U'"
       bind-key -n C-l if-shell "$is_vim" "send-keys C-l" "if-shell '[ #{pane_at_right} -eq 0 ]' 'select-pane -R'"
 
+      set-window-option -g mode-keys vi
+
       bind-key -T copy-mode-vi C-h if-shell "[ #{pane_at_left} -eq 0 ]" "select-pane -L"
       bind-key -T copy-mode-vi C-j if-shell "[ #{pane_at_bottom} -eq 0 ]" "select-pane -D"
       bind-key -T copy-mode-vi C-k if-shell "[ #{pane_at_top} -eq 0 ]" "select-pane -U"
       bind-key -T copy-mode-vi C-l if-shell "[ #{pane_at_right} -eq 0 ]" "select-pane -R"
+      bind-key -T copy-mode-vi Escape send-keys -X cancel
 
       run-shell "bash ${pkgs.tmuxPlugins.nord}/share/tmux-plugins/nord/nord.tmux"
     '';
