@@ -20,10 +20,16 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$nix_shell$directory$git_branch$git_status$git_state$character";
+      format = "$nix_shell$python$directory$git_branch$git_status$git_state$character";
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
+      };
+      python = {
+        format = "[(\\($virtualenv\\))]($style) ";
+        detect_files = [];
+        detect_extensions = [];
+        detect_folders = [];
       };
       nix_shell = {
         disabled = false;
