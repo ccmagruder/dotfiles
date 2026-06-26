@@ -2,18 +2,19 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    ./baleia.nix
     ./bat.nix
+    ./blink-cmp.nix
     ./bufdelete.nix
     ./gitsigns.nix
     ./lsp.nix
     ./lualine.nix
+    ./navic.nix
     ./nvim-tree.nix
+    ./satellite.nix
     ./telescope.nix
     ./tmux-navigator.nix
-    ./blink-cmp.nix
     ./toggleterm.nix
-    ./navic.nix
-    ./satellite.nix
   ];
 
   home.sessionVariables = {
@@ -75,14 +76,14 @@
 
     extraPlugins = [ pkgs.vimPlugins.vim-sleuth ];
 
-    # Auto-save
-    autoCmd = [
-      {
-        event = "FocusLost";
-        pattern = "*";
-        command = "wa";
-      }
-    ];
+    # # Auto-save
+    # autoCmd = [
+    #   {
+    #     event = "FocusLost";
+    #     pattern = "*";
+    #     command = "wa";
+    #   }
+    # ];
 
     # Keyboard shortcuts
     globals.mapleader = " ";
