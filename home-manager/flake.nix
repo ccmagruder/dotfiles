@@ -45,5 +45,11 @@
           modules = [ ./home-mbp.nix ./ide ];
           extraSpecialArgs = { inherit inputs; };
         };
+      flake.homeConfigurations."rosette" =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+          modules = [ ./home-rosette.nix ./ide ];
+          extraSpecialArgs = { inherit inputs; };
+        };
     };
 }
