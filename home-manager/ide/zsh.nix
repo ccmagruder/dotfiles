@@ -20,7 +20,8 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$nix_shell$python$directory$git_branch$git_status$git_state$character";
+      format = "\${env_var.STARSHIP_HOST_ALIAS}$nix_shell$python$directory$git_branch$git_status$git_state$character";
+      env_var.STARSHIP_HOST_ALIAS.format = "[$env_value](bold #EBCB8B) ";
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
