@@ -34,8 +34,6 @@
       winhighlight = "Normal:Normal,NormalNC:NormalNC";
       ttimeoutlen = 10;
       timeoutlen = 200;
-      title = true;
-      titlestring = "nvim";
     };
 
     # Color Theme

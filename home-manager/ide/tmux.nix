@@ -19,7 +19,7 @@
       set -g window-active-style 'bg=#000000'
 
       # vim-tmux-navigator with no-wrap
-      is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$' || [ '#{pane_title}' = 'nvim' ]"
+      is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 
       bind-key -n C-h if-shell "$is_vim" "send-keys C-h" "if-shell '[ #{pane_at_left} -eq 0 ]' 'select-pane -L'"
       bind-key -n C-j if-shell "$is_vim" "send-keys C-j" "if-shell '[ #{pane_at_bottom} -eq 0 ]' 'select-pane -D'"
