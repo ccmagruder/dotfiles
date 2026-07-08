@@ -8,7 +8,7 @@
         "rg" "--color=never" "--no-heading" "--with-filename"
         "--line-number" "--column" "--smart-case" "--hidden"
       ];
-      file_ignore_patterns = [ ".git/" ];
+      file_ignore_patterns = [ ".git/" "modules/" ];
     };
   };
   programs.nixvim.keymaps = [
