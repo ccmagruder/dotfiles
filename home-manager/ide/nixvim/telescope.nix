@@ -24,5 +24,11 @@
       action = "<cmd>Telescope find_files<cr>";
       options.desc = "Telescope: Fine Files";
     }
+    {
+      mode = "n";
+      key = "<leader>fr";
+      action = "<cmd>Telescope resume<cr>";
+      options.desc = "Telescope: Resume";
+    }
   ];
 }
