@@ -33,7 +33,7 @@
       autoread = true;
       winhighlight = "Normal:Normal,NormalNC:NormalNC";
       ttimeoutlen = 10;
-      timeoutlen = 200;
+      timeoutlen = 500;
     };
 
     # Color Theme
