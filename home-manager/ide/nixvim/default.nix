@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
@@ -12,9 +12,12 @@
     ./navic.nix
     ./nvim-tree.nix
     ./satellite.nix
+    ./indent-blankline.nix
     ./telescope.nix
     ./tmux-navigator.nix
     ./toggleterm.nix
+    ./vim-sleuth.nix
+    ./web-devicons.nix
   ];
 
   home.sessionVariables = {
@@ -67,14 +70,6 @@
         end,
       })
     '';
-
-    # Plugins, see imports for additional plugins
-    plugins = {
-      web-devicons.enable = true;
-      indent-blankline.enable = true;
-    };
-
-    extraPlugins = [ pkgs.vimPlugins.vim-sleuth ];
 
     # # Auto-save
     # autoCmd = [
