@@ -23,9 +23,9 @@
     colorschemes.nord.enable = true;
     extraConfigLua = ''
       vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" }) -- background black
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- dimmed background for inactive windows
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#242424" }) -- dimmed background for inactive windows
       vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#000000" }) -- nvim-tree active background
-      vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "#1a1a1a" }) -- nvim-tree inactive background (dimmed)
+      vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "#242424" }) -- nvim-tree inactive background (dimmed)
 
       -- Dim all neovim windows when losing focus to another tmux pane
       local focus_group = vim.api.nvim_create_augroup("TmuxFocusDim", { clear = true })

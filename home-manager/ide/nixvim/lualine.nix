@@ -5,7 +5,6 @@
     settings = {
       options = {
         disabled_filetypes = {
-          statusline = [ "NvimTree" ];
           winbar = [ "NvimTree" ];
         };
       };
