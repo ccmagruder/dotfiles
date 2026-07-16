@@ -7,6 +7,7 @@
     ./github-cli.nix
     ./home-manager.nix
     ./nixvim
+    ./unison.nix
     ./tmux.nix
     ./zsh.nix
   ];
