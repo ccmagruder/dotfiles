@@ -5,6 +5,7 @@
     settings = {
       renderer.indent_markers.enable = true;
       view.signcolumn = "no";
+      filters.exclude = ["results"];
     };
   };
   programs.nixvim.keymaps = [
