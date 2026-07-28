@@ -4,6 +4,10 @@
   home.homeDirectory = "/home/caleb.magruder";
   programs.git.settings.user.email = "caleb.magruder@simplerose.com";
 
+  home.sessionVariables = {
+    TZ = "America/Chicago";
+  };
+
   # Appends PATH with nix commands and installed binaries such as nvim.
   # Since nix on rosette is installed single-user, these commands are not added
   # system-wide in /etc/profile.
