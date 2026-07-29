@@ -8,6 +8,10 @@
     TZ = "America/Chicago";
   };
 
+  programs.tmux.extraConfig = ''
+    set -g status-right "#{prefix_highlight}#[fg=brightblack,bg=black,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #(TZ=America/Chicago date +'%%Y-%%m-%%d') #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #(TZ=America/Chicago date +'%%I:%%M %%p') "
+  '';
+
   # Appends PATH with nix commands and installed binaries such as nvim.
   # Since nix on rosette is installed single-user, these commands are not added
   # system-wide in /etc/profile.
