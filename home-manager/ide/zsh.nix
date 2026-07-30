@@ -11,6 +11,15 @@
       ide = "smug start";
     };
     enableCompletion = true;
+    initExtra = ''
+      # SSH_AUTH_SOCK goes stale in long-lived tmux sessions after reconnecting.
+      # Fix: point SSH_AUTH_SOCK at a fixed symlink; update the symlink each new
+      # shell so existing panes automatically pick up the fresh agent socket.
+      if [[ -n "$SSH_AUTH_SOCK" && "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]]; then
+        ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/auth_sock"
+        export SSH_AUTH_SOCK="$HOME/.ssh/auth_sock"
+      fi
+    '';
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
