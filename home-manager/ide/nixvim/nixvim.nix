@@ -73,5 +73,6 @@
     ];
 
     clipboard.register = "unnamedplus";
+    globals.clipboard = "osc52";
   };
 }

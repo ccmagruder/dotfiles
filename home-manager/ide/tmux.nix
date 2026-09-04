@@ -11,6 +11,9 @@
     terminal = "tmux-256color";
     escapeTime = 10;
     extraConfig = ''
+      set -g set-clipboard on
+      set -as terminal-features ',*:clipboard'
+
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
 
