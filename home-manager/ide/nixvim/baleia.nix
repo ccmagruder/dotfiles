@@ -8,7 +8,7 @@
 
       vim.api.nvim_create_autocmd("BufReadPost", {
         group = vim.api.nvim_create_augroup("BaleiaResults", { clear = true }),
-        pattern = "*.txt.gz",
+        pattern = { "*.txt.gz", "*.txt" },
         callback = function()
           local buf = vim.api.nvim_get_current_buf()
           vim.schedule(function()
