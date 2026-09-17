@@ -51,5 +51,11 @@
           modules = [ ./home-rosette.nix ./ide ];
           extraSpecialArgs = { inherit inputs; };
         };
+      flake.homeConfigurations."aws" =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."aarch64-linux";
+          modules = [ ./home-aws.nix ./ide ];
+          extraSpecialArgs = { inherit inputs; };
+        };
     };
 }
